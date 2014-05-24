@@ -1,4 +1,4 @@
-#include "hotelling_t2.hpp"
+#include "ublas_hotelling_t2.hpp"
 
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MODULE Main

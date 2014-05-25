@@ -66,7 +66,8 @@ T hotelling_t2_1test(
   std::cout << p_score << std::endl;
   T p_comp =boost::math::cdf(complement(dist, f_score));
   std::cout << p_comp << std::endl;
-  return p_comp;
+  //return p_comp;
+  return p_score;
 }
 
 
@@ -104,7 +105,8 @@ T hotelling_t2_2test(
   std::cout << p_score << std::endl;
   T p_comp =boost::math::cdf(complement(dist, f_score));
   std::cout << p_comp << std::endl;
-  return p_comp;
+  //return p_comp;
+  return p_score;
 }
 
 

@@ -35,8 +35,9 @@ BOOST_AUTO_TEST_CASE( one_sample1 )
 	  cov1(i,j)= cov1_array[i][j];
 
   BOOST_CHECK_EQUAL( 
-		    hotelling_t2_1test(mean1,mean2,cov1,n1)
-		    ,0.00015510119169827297);
+		    hotelling_t2_1test(mean1,mean2,cov1,n1),
+		    0.99984489880830174
+		     );
 
 }
 
@@ -74,8 +75,9 @@ BOOST_AUTO_TEST_CASE( two_sample )
         for (unsigned j = 0; j < placebo_cov.size2 (); ++ j)
 	  placebo_cov(i,j)= placebo_cov_array[i][j];
   BOOST_CHECK_EQUAL( 
-		    hotelling_t2_2test(drug_mean,placebo_mean,drug_cov,placebo_cov,n_drug,n_placebo)
-		    ,0.29169109743628624);
+		    hotelling_t2_2test(drug_mean,placebo_mean,drug_cov,placebo_cov,n_drug,n_placebo),
+		    0.70830890256371382
+		     );
 
 }
 
@@ -108,6 +110,7 @@ BOOST_AUTO_TEST_CASE( one_sample2 )
 	  cov1(i,j)= cov1_array[i][j];
  
   BOOST_CHECK_EQUAL( 
-		    hotelling_t2_1test(mean1,mean2,cov1,n1)
-		    , 0.2621048702199083);
+		    hotelling_t2_1test(mean1,mean2,cov1,n1),
+		    0.73789512978009164
+		     );
 }

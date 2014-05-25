@@ -7,8 +7,13 @@ http://www.real-statistics.com/multivariate-statistics/hotellings-t-square-stati
 http://www.real-statistics.com/multivariate-statistics/hotellings-t-square-statistic/hotellings-t-square-independent-samples/
 
 # Usage
+  
+- with boost ublas
+  ublas_hotelling_t2_test.cpp
 
-  #include "hotelling_t2.hpp" 
+- with opencv
+  cv_hotelling_t2_test.cpp
+
   
 
 

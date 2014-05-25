@@ -10,6 +10,7 @@ BOOST_AUTO_TEST_CASE( one_sample1 )
   // http://www.real-statistics.com/multivariate-statistics/hotellings-t-square-statistic/one-sample-hotellings-t-square/
   //example1 data
 
+
   int n1=25;
   cv::Mat_<double> mean1= (cv::Mat_<double>(5,1) 
 			   << 5.6 , 7.4 , 5.08 , 5.04 , 12.88);
@@ -34,7 +35,26 @@ BOOST_AUTO_TEST_CASE( one_sample1 )
 		    ,8.7787347706440375);
   BOOST_CHECK_EQUAL( 
 		    hotelling1_t2_test(mean1,mean2,cov1,n1)
-		    ,0.00015510119169827297);
+		    ,0.99984489880830174);
+
+  //test cv::calcCovarMatrix
+  cv::Mat_<double> vals1 
+    = 
+    (cv::Mat_<double>(25,1) 
+     <<
+     6,6,5,10,7,6,5,3,8,8,5,8,5,4,2,7,4,5,7,1,5,4,7,4,8);
+  cv::Mat_<double> cov, mu;
+  cv::calcCovarMatrix(vals1,cov, mu, CV_COVAR_NORMAL | CV_COVAR_ROWS| CV_COVAR_SCALE);
+  //std::cout << mu << std::endl;
+  //std::cout << cov << std::endl;
+  //std::cout << cov*25.0/24.0 << std::endl;
+  //std::cout << cov(0,0)*n1/(n1-1) << std::endl;
+
+  BOOST_CHECK_EQUAL( 
+		    cov(0,0)*n1/(n1-1)
+		    ,
+		    cov1(0,0)
+		     );
 
 }
 
@@ -67,7 +87,8 @@ BOOST_AUTO_TEST_CASE( two_sample )
   BOOST_CHECK_EQUAL
     (
      hotelling2_t2_score(mean_drug,mean_placebo,cov_drug,cov_placebo,n_drug,n_placebo)
-     ,4.1160139772437194);
+     ,4.1160139772437194
+     );
 
   BOOST_CHECK_EQUAL
     (
@@ -82,7 +103,8 @@ BOOST_AUTO_TEST_CASE( two_sample )
      ,
      round
      (10000000000000 *
-      0.29169109743628618));
+      0.70830890256371382
+      ));
 
 }
 

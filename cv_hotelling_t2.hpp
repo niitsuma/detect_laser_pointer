@@ -12,7 +12,8 @@ T hotelling1_t2_test(
   unsigned k=mean1.size[0];
   T t2_score=hotelling1_t2_score(mean1, mean2,cov1, n);
   T f_score =hotelling_t2_score_to_f_score(t2_score,  k,  n);
-  return fisher_f_score_to_cdf_complement(f_score,  k, n);
+  //return fisher_f_score_to_cdf_complement(f_score,  k, n);
+  return fisher_f_score_to_cdf(f_score,  k, n);
 }
 
 
@@ -24,7 +25,8 @@ T hotelling2_t2_test(
   int n = n1 + n2 -1;
   T t2_score=hotelling2_t2_score(mean1, mean2,cov1,cov2, n1,n2);
   T f_score =hotelling_t2_score_to_f_score(t2_score,  k,  n);
-  return fisher_f_score_to_cdf_complement(f_score,  k, n);
+  //return fisher_f_score_to_cdf_complement(f_score,  k, n);
+  return fisher_f_score_to_cdf(f_score,  k, n);
 }
 
 #endif // CV_HOTELLING_T2_HPP

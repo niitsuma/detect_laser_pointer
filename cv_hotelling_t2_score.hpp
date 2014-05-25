@@ -8,7 +8,7 @@
 template<class T>
 T hotelling1_t2_score(
   cv::Mat_<T> mean1,  cv::Mat_<T> mean2,  cv::Mat_<T> cov1,  unsigned n1){
-  unsigned k=mean1.size[0];  
+  //unsigned k=mean1.size[0];  
   cv::Mat_<T > mean_diff=mean1-mean2;
   T t2_score= mean_diff.dot(cov1.inv() * mean_diff)*n1;
   return t2_score;}
@@ -26,8 +26,8 @@ T hotelling1_f_score(
 template<class T>
 T hotelling2_t2_score(
   cv::Mat_<T> mean1,  cv::Mat_<T> mean2,  cv::Mat_<T> cov1,  cv::Mat_<T> cov2,   unsigned n1,  unsigned n2){
-  unsigned k=mean1.size[0]; 
-  int n = n1 + n2 -1;
+  //unsigned k=mean1.size[0]; 
+  //int n = n1 + n2 -1;
   cv::Mat_<T> mean_diff=mean1-mean2;
 #if 1
   cv::Mat_<T> 

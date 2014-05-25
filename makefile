@@ -1,27 +1,35 @@
 CC		= g++
 INCDIR		= /opt/local/include
-CFLAGS		= -DBOOST_UBLAS_NDEBUG -Wall -I/$(INCDIR) -I. 
-LIBS		= -lboost_unit_test_framework
-SRCS		= hotelling_t2_test.cpp ublas-io-test.cpp
-OBJS		= $(SRCS:.c=.o)
-PROGRAM	=  ublas_hotelling_t2_test.exe cv_hotelling_t2_test.exe
+CFLAGS		= -Wall \
+		-I/$(INCDIR) \
+		-I. 
 
-all:		$(PROGRAM)  test
+LIBS		=  -lopencv_core -lopencv_highgui -lopencv_objdetect -lopencv_imgproc -lopencv_video -lopencv_contrib -lopencv_nonfree -lopencv_features2d 
+#LIBS		= -lboost_unit_test_framework
 
-cv_hotelling_t2_test.exe : cv_hotelling_t2_test.cpp cv_hotelling_t2.hpp
-	g++ -lopencv_core -lboost_unit_test_framework -o $@ $<  
+OBJS		= $(SRCS:.c=.o) 
 
-ublas_hotelling_t2_test.exe : ublas_hotelling_t2_test.cpp ublas_hotelling_t2.hpp 
-	g++ -DBOOST_UBLAS_NDEBUG -lboost_unit_test_framework -o ublas_hotelling_t2_test.exe ublas_hotelling_t2_test.cpp
+PROGRAM		=  cv_detect_laser.exe
 
-#%.exe: %.cpp
-#	$(CC) $(CFLAGS) $(LDFLAGS) $(LIBS)  -o $@ $<  
+#all:		$(PROGRAM) test
+all:		$(PROGRAM)
+
+%.exe: %.cpp
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LIBS) -o $@ $<
 
 
-test : $(PROGRAM) 
-	./ublas_hotelling_t2_test.exe
-	./cv_hotelling_t2_test.exe
+%.exe: %.c
+	gcc $(CFLAGS) $(LDFLAGS) $(LIBS) -o $@ $<
+
 
 
 clean:		
 	rm -f *.o *~  $(PROGRAM)
+
+
+test : $(PROGRAM) 
+	./cv_detect_laser.exe
+
+
+
+

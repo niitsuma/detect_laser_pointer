@@ -1,24 +1,17 @@
-Hotelling’s T-square test 
-using 
-boost C++ library 
-or 
-OpenCV
-
-tested on data in
-
-http://www.real-statistics.com/multivariate-statistics/hotellings-t-square-statistic/one-sample-hotellings-t-square/
-
-http://www.real-statistics.com/multivariate-statistics/hotellings-t-square-statistic/hotellings-t-square-independent-samples/
+Laser pointer detection
 
 # Usage
-  
-## with boost ublas
-see
- `ublas_hotelling_t2_test.cpp `
 
-## with opencv
-see
-  `cv_hotelling_t2_test.cpp `
+specify your laser color in HSV color.
+And the color sotre to gloval array  
+
+     `list_hsv_laser `
+
+around line 20 in  `cv_detect_laser.cpp `
+
+Then, observed color are compared using   hotelling's t2 test
+
+  
 
   
 

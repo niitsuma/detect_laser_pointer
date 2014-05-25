@@ -1,4 +1,8 @@
-Hotelling’s T-square test using boost C++ library 
+Hotelling’s T-square test 
+using 
+boost C++ library 
+or 
+OpenCV
 
 tested on data in
 
@@ -8,11 +12,13 @@ http://www.real-statistics.com/multivariate-statistics/hotellings-t-square-stati
 
 # Usage
   
-- with boost ublas
-  ublas_hotelling_t2_test.cpp
+## with boost ublas
+see
+ `ublas_hotelling_t2_test.cpp `
 
-- with opencv
-  cv_hotelling_t2_test.cpp
+## with opencv
+see
+  `cv_hotelling_t2_test.cpp `
 
   
 

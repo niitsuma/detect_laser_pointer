@@ -11,6 +11,7 @@
 
 #include "cv_hotelling_t2.hpp"
 
+
 #define MAX_N_FEATURE_POINT 50
 #define TH_T2_SCORE1 0.99
 #define INPUT_VIDEO "laser.avi"

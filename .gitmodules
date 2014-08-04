@@ -1,0 +1,3 @@
+[submodule "hotelling_t_square_test"]
+	path = hotelling_t_square_test
+	url = https://github.com/niitsuma/hotelling_t_square_test

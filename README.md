@@ -7,7 +7,7 @@ And the color sotre to gloval array
 
      `list_hsv_laser `
 
-around line 20 in  `cv_detect_laser.cpp `
+around line 20 in  `cv_detect_laser.hpp `
 
 Then, observed color are compared using   hotelling's t2 test using https://github.com/niitsuma/hotelling_t_square_test
 

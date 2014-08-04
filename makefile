@@ -9,12 +9,12 @@ LIBS		=  -lopencv_core -lopencv_highgui -lopencv_objdetect -lopencv_imgproc -lop
 
 OBJS		= $(SRCS:.c=.o) 
 
-PROGRAM		=  cv_detect_laser.exe
+PROGRAM		=  cv_detect_laser_test.exe
 
 #all:		$(PROGRAM) test
 all:		$(PROGRAM)
 
-%.exe: %.cpp
+%.exe: %.cpp  cv_detect_laser.hpp
 	$(CC) $(CFLAGS) $(LDFLAGS) $(LIBS) -o $@ $<
 
 

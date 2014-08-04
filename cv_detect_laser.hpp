@@ -15,9 +15,6 @@
 
 #define MAX_N_FEATURE_POINT 50
 #define TH_T2_SCORE1 0.99
-#define INPUT_VIDEO "laser.avi"
-#define WRITE_VIDEO 0
-#define OUTPUT_VIDEO "detected.avi"
 
 //manual sample laser HSV color 40 poind  
 int n_hsv_laser=40;
@@ -85,7 +82,7 @@ class laser_detector
 public:
 
   bool detected; 
-  T detected_t2_score1;
+  double detected_t2_score1;
   double detected_t2_score2;
   cv::Point detected_point;
   int detected_size;
@@ -125,6 +122,7 @@ public:
   bool detect(cv::Mat image)
   {
     detected=false;
+    detected_t2_score2= 1000;
     Mat hsvimg;
     cv::cvtColor(image,hsvimg,CV_BGR2HSV);
     vector<Mat> channels;
@@ -189,28 +187,29 @@ public:
 	       t2_score2 >0
 	       )
 	      {
-		if(detected){
-		  if(t2_score2 > detected_t2_score2 ){
-		    t2_score1 = detected_t2_score1;
-		    t2_score2 = detected_t2_score2;
+		detected=true;
+		//if(detected){
+		  if(t2_score2 < detected_t2_score2 ){
+		    detected_t2_score1=t2_score1 ;
+		    detected_t2_score2=t2_score2;
 		    detected_point=keypoints1[i].pt;
 		    detected_size=keypoints1[i].size;;
 		  }
-		}else{
-		  detected=true;
-		  t2_score1 = detected_t2_score1;
-		  t2_score2 = detected_t2_score2;
-		  detected_point=keypoints1[i].pt;
-		  detected_size=keypoints1[i].size;;
-		}
-		std::cout << detected_t2_score2 << " " << detected_t2_score1 ;
+		// }else{
+		//   detected=true;
+		//   t2_score1 = detected_t2_score1;
+		//   t2_score2 = detected_t2_score2;
+		//   detected_point=keypoints1[i].pt;
+		//   detected_size=keypoints1[i].size;;
+		//}
+		std::cout << t2_score2 << " " << t2_score1 ;
 		std::cout <<  roi ;
 		std::cout << mu << std::endl;
 		//cv::circle(image,keypoints1[i].pt,ks*5,CV_RGB(255,0,0),3,8,0);
 	      }
 	  }
       }
-    std::cout << std::endl;
+    //std::cout << std::endl;
     return detected;
   }
 };
@@ -221,7 +220,7 @@ public:
 
 
 
-#if 1
+#if 0
 
     int main( )
     {
